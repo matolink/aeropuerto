@@ -2,10 +2,99 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client-js" 
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Avion {
+    id Int @id @default (autoincrement())
+    nombre String
+    cantidad_pasajeros_avion Int
+    }
+
+model Pais {
+    id Int @id @default (autoincrement())
+    nombre String
+    }
+
+model Aeropuerto {
+    id Int @id @default (autoincrement())
+    nombre String
+    id_pais Int 
+    pais Pais @relation(fields:[id_pais], references:[id])
+    }
+
+model Tipo_vuelos {
+    id Int @id @default (autoincrement())
+    nombre String
+    }
+
+model Tipo_asientos {
+    id Int @id @default (autoincrement())
+    nombre String
+    }
+
+model Tipo_equipajes {
+    id Int @id @default (autoincrement())
+    nombre String
+    }
+
+model Genero {
+    id Int @id @default (autoincrement())
+    nombre String
+    }
+
+model Tipo_tarifas {
+    id Int @id @default (autoincrement())
+    nombre String
+    }
+
+model Pasajero {
+    num_documento String @id 
+    nombre String
+    apellido String
+    is_rut Boolean
+    fecha_nacimiento DateTime
+    id_genero Int
+    numero_tel Int
+    genero Genero @relation(fields:[id_genero], references:[id])
+    }
+
+model Vuelo {
+    id Int @id @default (autoincrement())
+    id_tipo_vuelos Int
+    id_aero_salida Int
+    id_aero_llegada Int
+    fecha_salida DateTime
+    fecha_llegada DateTime
+    id_avion Int
+    tipo_vuelo Tipo_vuelos @relation(fields:[id_tipo_vuelos], references:[id])
+    aeropuerto_salida Aeropuerto @relation(fields:[id_aero_salida], references:[id], name: aero_salida)
+    aeropuerto_llegada Aeropuerto @relation(fields:[id_aero_llegada], references:[id], name: aero_llegada)
+    avion Avion @relation(fields:[id_avion], references:[id])
+    }
+
+model Vuelo_tipos_asiento {
+    id_vuelo Int
+    id_tipo_asiento Int
+    vuelo Vuelo @relation(fields:[id_vuelo], references:[id])
+    tipo_asiento Tipo_asientos @relation(fields:[id_tipo_asiento], references:[id])
+    @@id([id_vuelo, id_tipo_asiento])
+    }
+
+model Pasaje {
+    id Int @id @default (autoincrement())
+    nombre String
+    id_tipo_tarifas Int
+    id_vuelo Int
+    num_documento_pas String
+    id_tipo_asiento Int
+    tipo_asiento Tipo_asientos @relation(fields:[id_tipo_asiento], references:[id])
+    pasajero Pasajero @relation(fields:[num_documento_pas], references:[num_documento])
+    vuelo Vuelo @relation(fields:[id_vuelo], references:[id])
+    tipo_tarifas Tipo_tarifas @relation(fields:[id_tipo_tarifas], references:[id])
+    }
