@@ -1,0 +1,10 @@
+GET localhost:3000/aviones
+POST localhost:3000/aviones
+Content-Type: application/json
+
+{
+        "nombre":"pruebita",
+        "capacidad":"8000000"
+
+    }
+

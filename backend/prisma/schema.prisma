@@ -45,8 +45,18 @@ model Tipo_asientos {
 }
 
 model Tipo_equipajes {
-  id     Int    @id @default(autoincrement())
-  nombre String
+  id                     Int                      @id @default(autoincrement())
+  nombre                 String
+  Tipo_equipajes_pasajes Tipo_equipajes_pasajes[]
+}
+
+model Tipo_equipajes_pasajes {
+  id_pasaje         Int
+  id_tipo_equipajes Int
+  pasaje            Pasaje         @relation(fields: [id_pasaje], references: [id])
+  tipo_equipajes    Tipo_equipajes @relation(fields: [id_tipo_equipajes], references: [id])
+
+  @@id([id_pasaje, id_tipo_equipajes])
 }
 
 model Genero {
@@ -107,14 +117,15 @@ model Vuelo_tipos_asiento {
 }
 
 model Pasaje {
-  id                Int           @id @default(autoincrement())
-  nombre            String
-  id_tipo_tarifas   Int
-  id_vuelo          Int
-  num_documento_pas String
-  id_tipo_asiento   Int
-  tipo_asiento      Tipo_asientos @relation(fields: [id_tipo_asiento], references: [id])
-  pasajero          Pasajero      @relation(fields: [num_documento_pas], references: [num_documento])
-  vuelo             Vuelo         @relation(fields: [id_vuelo], references: [id])
-  tipo_tarifas      Tipo_tarifas  @relation(fields: [id_tipo_tarifas], references: [id])
+  id                     Int                      @id @default(autoincrement())
+  nombre                 String
+  id_tipo_tarifas        Int
+  id_vuelo               Int
+  num_documento_pas      String
+  id_tipo_asiento        Int
+  tipo_asiento           Tipo_asientos            @relation(fields: [id_tipo_asiento], references: [id])
+  pasajero               Pasajero                 @relation(fields: [num_documento_pas], references: [num_documento])
+  vuelo                  Vuelo                    @relation(fields: [id_vuelo], references: [id])
+  tipo_tarifas           Tipo_tarifas             @relation(fields: [id_tipo_tarifas], references: [id])
+  Tipo_equipajes_pasajes Tipo_equipajes_pasajes[]
 }

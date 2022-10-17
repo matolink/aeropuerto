@@ -1,22 +1,13 @@
-import { getAviones } from '../controllers/aviones.controller.js'
-  export const route = {
+import { getAviones, postAviones } from '../controllers/aviones.controller.js'
+export const avionesRoutes = [
+  {
     method: 'GET',
     url: '/aviones',
-    schema: {
-      querystring: {
-        name: { type: 'string' },
-        excitement: { type: 'integer' },
-      },
-      response: {
-        200: {
-          type: 'object',
-          properties: {
-            hello: { type: 'string' },
-          },
-        },
-      },
-    },
-    handler: function (request, reply) {
-      reply.send({ hello: 'world' })
-    },
-  }
+    handler: getAviones,
+  },
+  {
+    method: 'POST',
+    url: '/aviones',
+    handler: postAviones,
+  },
+]

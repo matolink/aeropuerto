@@ -1,13 +1,20 @@
 import { fastify } from 'fastify'
-import { avionesRouter } from './routes/aviones.routes.js'
-// Require the framework and instantiate it
+import { avionesRoutes } from './routes/aviones.routes.js'
+import { createRoutes } from './routes/create.routes.js'
+// import { avionesRouter } from './routes/aviones.routes.js'
 const server = fastify({ logger: true })
 
-await server.register(avionesRouter)
 // Declare a route
-// server.get('/', async (request, reply) => {
-//   return { hello: 'world' }
-// })
+server.get('/', async (request, reply) => {
+  return { hello: 'world' }
+})
+
+avionesRoutes.forEach(route => {
+  server.route(route)
+})
+createRoutes.forEach(route => {
+  server.route(route)
+})
 //
 // server.get('/a', async (request, reply) => {
 //   return { hello: 'world' }
