@@ -1,4 +1,4 @@
-GET localhost:3000/aviones
+GET localhost:3000/busqueda
 POST localhost:3000/database
 POST localhost:3000/aviones
 Content-Type: application/json
