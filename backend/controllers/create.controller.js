@@ -33,6 +33,32 @@ export const postDB = async (req, res) => {
       },
     ],
   })
+  await prisma.tipo_tarifas.createMany({
+    data: [
+      {
+        nombre: "tarifa económica",
+      },
+      {
+        nombre: "tarifa normal",
+      },
+      {
+        nombre: "tarifa premium",
+      },
+    ],
+  })
+  await prisma.tipo_equipajes.createMany({
+    data: [
+      {
+        nombre: "equipaje de mano",
+      },
+      {
+        nombre: "bolso de mano",
+      },
+      {
+        nombre: "equipaje de bodega",
+      },
+    ],
+  })
   await prisma.avion.createMany({
     data: [
       {
@@ -94,6 +120,19 @@ export const postDB = async (req, res) => {
       {
         nombre: "Sto Domingo",
         id_pais: 3,
+      },
+    ],
+  })
+  await prisma.pasajero.createMany({
+    data: [
+      {
+        num_documento: "191919191-3",
+        nombre: "Eduardo",
+        apellido: "Gatica",
+        is_rut: true,
+        fecha_nacimiento: new Date('1997-04-19'),
+        id_genero: 1,
+        numero_tel: '+569291623849'
       },
     ],
   })

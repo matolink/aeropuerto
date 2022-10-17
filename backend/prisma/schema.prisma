@@ -12,41 +12,35 @@ datasource db {
 
 model Avion {
   id                       Int     @id @default(autoincrement())
-  nombre                   String
+  nombre                   String @unique 
   cantidad_pasajeros_avion Int
   Vuelo                    Vuelo[]
 }
 
 model Pais {
   id         Int          @id @default(autoincrement())
-  nombre     String
+  nombre     String @unique
   Aeropuerto Aeropuerto[]
 }
 
 model Aeropuerto {
   id               Int                @id @default(autoincrement())
-  nombre           String
+  nombre           String               @unique
   id_pais          Int
   pais             Pais               @relation(fields: [id_pais], references: [id])
   Aeropuerto_vuelo Aeropuerto_vuelo[]
 }
 
-model Tipo_vuelos {
-  id     Int     @id @default(autoincrement())
-  nombre String
-  Vuelo  Vuelo[]
-}
-
 model Tipo_asientos {
-  id                  Int                   @id @default(autoincrement())
-  nombre              String
+  id                  Int                   @id @default(autoincrement()) 
+  nombre              String @unique
   Vuelo_tipos_asiento Vuelo_tipos_asiento[]
   Pasaje              Pasaje[]
 }
 
 model Tipo_equipajes {
   id                     Int                      @id @default(autoincrement())
-  nombre                 String
+  nombre                 String @unique
   Tipo_equipajes_pasajes Tipo_equipajes_pasajes[]
 }
 
@@ -61,13 +55,13 @@ model Tipo_equipajes_pasajes {
 
 model Genero {
   id       Int        @id @default(autoincrement())
-  nombre   String
+  nombre   String @unique 
   Pasajero Pasajero[]
 }
 
 model Tipo_tarifas {
   id     Int      @id @default(autoincrement())
-  nombre String
+  nombre String @unique
   Pasaje Pasaje[]
 }
 
@@ -76,22 +70,20 @@ model Pasajero {
   nombre           String
   apellido         String
   is_rut           Boolean
-  fecha_nacimiento DateTime
+  fecha_nacimiento DateTime 
   id_genero        Int
-  numero_tel       Int
+  numero_tel       String
   genero           Genero   @relation(fields: [id_genero], references: [id])
   Pasaje           Pasaje[]
 }
 
 model Vuelo {
   id                  Int                   @id @default(autoincrement())
-  id_tipo_vuelos      Int
   id_aero_salida      Int
   id_aero_llegada     Int
   fecha_salida        DateTime
   fecha_llegada       DateTime
   id_avion            Int
-  tipo_vuelo          Tipo_vuelos           @relation(fields: [id_tipo_vuelos], references: [id])
   avion               Avion                 @relation(fields: [id_avion], references: [id])
   Vuelo_tipos_asiento Vuelo_tipos_asiento[]
   Pasaje              Pasaje[]
