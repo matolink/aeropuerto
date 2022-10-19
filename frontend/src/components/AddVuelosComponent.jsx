@@ -4,9 +4,9 @@ function AddVuelosComponent() {
   const [ciudadOrigen, setCiudadOrigen] = useState('')
   const [ciudadDestino, setCiudadDestino] = useState('')
   const [fechaSalida, setFechaSalida] = useState('')
-  const [fechaRegreso, setFechaRegreso] = useState('')
+  const [fechaLlegada, setFechaLlegada] = useState('')
   const [horaSalida, setHoraSalida] = useState('')
-  const [horaRegreso, setHoraRegreso] = useState('')
+  const [horaLlegada, setHoraLlegada] = useState('')
   const [ciudades, setCiudades] = useState([])
   useEffect(() => {
     fetch('http://localhost:3000/vuelos')
@@ -21,8 +21,18 @@ function AddVuelosComponent() {
     ciudadDestino: ciudadDestino,
     fechaSalida: fechaSalida,
     horaSalida: horaSalida,
-    fechaRegreso: fechaRegreso,
-    horaRegreso: horaRegreso,
+    fechaLlegada: fechaLlegada,
+    horaLlegada: horaLlegada,
+  }
+
+  function request(datos) {
+    if (datos.ciudadOrigen == datos.ciudadDestino) {
+      return alert('no se debe escoger la misma ciudad como destino y origen')
+    } else if (datos.fechaSalida > datos.fechaLlegada) {
+      return alert(
+        'no se debe escoger una fecha de salida mayor a la de llegada'
+      )
+    }
   }
 
   const handleCiudadOrigenChange = (e) => {
@@ -34,14 +44,14 @@ function AddVuelosComponent() {
   const handleFechaSalida = (e) => {
     setFechaSalida(e.target.value)
   }
-  const handleFechaRegreso = (e) => {
-    setFechaRegreso(e.target.value)
+  const handleFechaLlegada = (e) => {
+    setFechaLlegada(e.target.value)
   }
   const handleHoraSalida = (e) => {
     setHoraSalida(e.target.value)
   }
-  const handleHoraRegreso = (e) => {
-    setHoraRegreso(e.target.value)
+  const handleHoraLlegada = (e) => {
+    setHoraLlegada(e.target.value)
   }
   return (
     <div className='mainContainer'>
@@ -108,29 +118,44 @@ function AddVuelosComponent() {
                 className='form-control'
                 id='fechaInicio'
                 onChange={handleFechaSalida}
+                required
               />
             </div>
             <div class='container'>
               <label for='appt'>Hora Salida</label>
-              <input type='time' id='appt' className='form-control' onChange={handleHoraSalida}/>
+              <input
+                type='time'
+                id='appt'
+                className='form-control'
+                onChange={handleHoraSalida}
+                required
+              />
             </div>
             <div className='datePickerContainer container'>
-              <label for='fechaRegreso'>Fecha de Regreso</label>
+              <label for='fechaLlegada'>Fecha de Llegada</label>
               <input
+                required
                 type='date'
                 className='form-control'
-                id='fechaRegreso'
-                onChange={handleFechaRegreso}
+                id='fechaLlegada'
+                onChange={handleFechaLlegada}
               />
             </div>
             <div class='container'>
-              <label for='appt'>Hora Regreso</label>
-              <input type='time' id='appt' className='form-control' onChange={handleHoraRegreso}/>
+              <label for='appt'>Hora Llegada</label>
+              <input
+                required
+                type='time'
+                id='appt'
+                className='form-control'
+                onChange={handleHoraLlegada}
+              />
             </div>
             <button
               onClick={(e) => {
                 e.preventDefault()
                 console.log(vuelo)
+                request(vuelo)
               }}
               className=' m-2 btn btn-primary'
             >

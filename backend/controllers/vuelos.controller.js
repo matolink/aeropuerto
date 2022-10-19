@@ -29,3 +29,17 @@ export const getVuelos = async (req, res) => {
   )
   return paises
 }
+
+export const postVuelos = async (req, res) => {
+//   const crearVuelo = await prisma.vuelo.create({
+//         data{
+//         id_aero_salida : req.body.ciudadOrigen,
+//         id_aero_llegada : req.body.ciudadDestino,
+//         fecha_salida: req.body.fechaSalida,
+//         fecha_llegada: req.body.fechaLlegada,
+//
+//     }
+//
+//     })
+// return crearVuelo
+}
