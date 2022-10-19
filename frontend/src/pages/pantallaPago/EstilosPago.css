@@ -1,0 +1,74 @@
+.holap {
+	margin-bottom: 30px;
+	width: 60%;
+	margin-top: 50px;
+	margin-left: 30px;
+	margin-right: 50px;
+	background: #fff;
+	border-radius: 5px;
+	padding: 50px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.label_uno {
+	margin-left: 15px;
+}
+
+.label_dos {
+    margin-top: 10px;
+	margin-left: 10px;
+}
+
+.botone{
+
+    width: 1000px;
+    height: 100px;
+    color: #080808;
+    /* border: 1px solid gray; */
+    border-radius: 15px;
+    border: none;
+    background-color:grey;
+}
+
+.botone_dos{
+
+    width: 1000px;
+    height: 100px;
+    color: #080808;
+    border: 1px solid gray;
+    border-radius: 15px;
+    background-color:rgb(255, 255, 255);
+}
+
+.botone_tres{
+
+    width: 200px;
+    height: 40px;
+    color: #080808;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color:rgb(175, 175, 175);
+    margin-left: 50px;
+}
+
+
+.estilo_one{
+color:#fff;
+text-align: left;
+margin-left: 50px;
+
+}
+
+.cubox{
+margin-left: -75%;
+}
+
+.cubox_dos{
+margin-left: -80%;
+}
+
+.esconder{
+    color:#fff;
+}
+    
+
