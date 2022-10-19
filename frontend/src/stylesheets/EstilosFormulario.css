@@ -5,8 +5,8 @@
 }
 
 body {
-	background: #E8E8E8;
-	font-family: 'Open Sans', sans-serif;
+	background: #e8e8e8;
+	font-family: "Open Sans", sans-serif;
 }
 
 /* .contenedor {
@@ -24,18 +24,18 @@ select {
 	outline: 3;
 	padding: 10px;
 	border-radius: 8px;
-	border: 1px solid silver
+	border: 1px solid silver;
 }
 .selectAltura {
-	display:block;
-	height:42px;
-	width:230px;
+	display: block;
+	height: 42px;
+	width: 230px;
 }
 
 .formulario {
 	margin-bottom: 30px;
 	width: 90%;
-	margin-top: 50px;
+	margin-top: 10px;
 	margin-left: 30px;
 	margin-right: 50px;
 	background: #fff;
@@ -44,14 +44,11 @@ select {
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-
-
 .formulario input,
 .formulario textarea {
-	
-	margin-right: 300px;
+	margin-right: 20px;
 	margin-left: 10px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Open Sans", sans-serif;
 	width: 70%;
 	border-radius: 5px;
 	border: 2px solid #e2e2e2;
@@ -63,16 +60,14 @@ select {
 
 .formulario input:focus {
 	outline: none;
-	border: 2px solid #0085FF;
+	border: 2px solid #0085ff;
 }
 
-
 .formulario button[type="submit"] {
-
 	display: block;
-	background: #0085FF;
+	background: #0085ff;
 	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Open Sans", sans-serif;
 	border: none;
 	cursor: pointer;
 	width: 70%;
@@ -80,24 +75,13 @@ select {
 	border-radius: 5px;
 	color: #fff;
 	font-size: 16px;
-	transition: .3s ease all;
+	transition: 0.3s ease all;
 }
 
-.titulo{
-	
-	margin-top: 40px;
-	margin-left: 500px;
-	
-}
-
-.titulo2{
-	
+.titulo2 {
 	margin-top: 10px;
 	text-align: left;
-	
 }
-
-
 
 .formulario input[type="radio"] {
 	width: auto;
@@ -107,15 +91,12 @@ select {
 	width: 4%;
 	margin-left: 1px;
 	display: flex;
-	
 }
-
-
 
 .formulario {
 	display: grid;
 	grid-template-columns: 350px 350px;
-	gap: 20px;
+	gap: 5px;
 	column-gap: 1px;
 }
 
@@ -127,7 +108,6 @@ select {
 	cursor: pointer;
 }
 
-
 .cuadro3 {
 	display: grid;
 	grid-template-columns: 2fr 2fr;
@@ -136,28 +116,31 @@ select {
 }
 
 .cuadro1 {
-display:block ;
-align-items:left ;
-justify-content: left;
+	display: block;
+	align-items: left;
+	justify-content: left;
 }
 
 .cuadro2 {
-	display:block ;
-	align-items:right ;
-	justify-content:right;
-	}
+	display: block;
+	align-items: right;
+	justify-content: right;
+}
 
 .cuadroResumen {
-	margin-bottom: 30px;
-	width: 60%;
-	margin-top: 132px;
+	margin-bottom: 10px;
+	max-width: 1000px;
+	height: fit-content;
+	margin-top: 10px;
 	background: #fff;
 	border-radius: 5px;
 	padding: 50px;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-	}
+}
 
 .labelResumen {
+	min-width: 300px;
+	max-width: 400px;
 	font-size: 20px;
 	color: #1f1f1f;
 	line-height: 45px;
@@ -170,3 +153,13 @@ justify-content: left;
 	line-height: 75px;
 }
 
+/* Estilos Agregados por Ciro */
+
+.formContainer {
+	width: 60%;
+}
+
+.contactoContainer {
+	width: 500px;
+	height: 50px;
+}

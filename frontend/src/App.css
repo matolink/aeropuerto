@@ -1,0 +1,7 @@
+.App {
+	width: auto;
+	height: 100vh;
+	background-image: url("../public/av_imagen.jpeg");
+	background-size: 100%;
+	background-repeat: repeat;
+}

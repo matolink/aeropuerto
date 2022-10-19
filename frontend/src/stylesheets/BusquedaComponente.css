@@ -1,0 +1,17 @@
+.formularioPrincipal {
+	font-size: 20px;
+}
+
+.cardBusqueda {
+	width: 35rem;
+}
+
+.claseOculta {
+	display: none;
+}
+
+body {
+	background-image: url("../imgs/av_imagen.jpeg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
