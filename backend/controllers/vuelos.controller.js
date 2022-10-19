@@ -15,7 +15,7 @@ import { prisma } from '../utils/prisma.js'
 //   return aeropuertos
 // }
 
-export const getFormulario = async (req, res) => {
+export const getVuelos = async (req, res) => {
   const aeropuertos = await prisma.aeropuerto.findMany()
   const paises = await Promise.all(
     aeropuertos.map(async (e) => {
@@ -29,5 +29,3 @@ export const getFormulario = async (req, res) => {
   )
   return paises
 }
-
-export const postFormulario = async (req, res) => {}
