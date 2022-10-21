@@ -1,4 +1,4 @@
-import { getVuelos , postVuelos} from '../controllers/vuelos.controller.js'
+import { getVuelos, postVuelos } from '../controllers/vuelos.controller.js'
 export const vueloRoutes = [
   {
     method: 'GET',

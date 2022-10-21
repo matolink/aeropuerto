@@ -24,22 +24,37 @@ export const getVuelos = async (req, res) => {
           id: e.id_pais,
         },
       })
-      return { id: e.id, nombre: `${e.nombre} - ${inserts.nombre}` }
+      return {
+        id: e.id,
+        nombre: `${e.nombre} - ${inserts.nombre}`,
+        id_pais: e.id_pais,
+      }
     })
   )
   return paises
 }
 
 export const postVuelos = async (req, res) => {
-//   const crearVuelo = await prisma.vuelo.create({
-//         data{
-//         id_aero_salida : req.body.ciudadOrigen,
-//         id_aero_llegada : req.body.ciudadDestino,
-//         fecha_salida: req.body.fechaSalida,
-//         fecha_llegada: req.body.fechaLlegada,
-//
-//     }
-//
-//     })
-// return crearVuelo
+  let id_avion = 2
+  if (req.body.id_pais_salida === req.body.id_pais_llegada) {
+    id_avion = 1
+  }
+  try {
+    const crearVuelo = await prisma.vuelo.create({
+      data: {
+        id_aero_salida: Number(req.body.id_aero_salida),
+        id_aero_llegada: Number(req.body.id_aero_llegada),
+        fecha_salida: new Date(req.body.fecha_salida),
+        fecha_llegada: new Date(req.body.fecha_llegada),
+        id_avion: id_avion,
+      },
+    })
+        res.status(200)
+        return crearVuelo
+  } catch (error) {
+        res.status(400)
+        res.send(error)
+        console.error(error)
+        return
+    }
 }

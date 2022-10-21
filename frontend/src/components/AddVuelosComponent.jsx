@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 function AddVuelosComponent() {
   const [ciudadOrigen, setCiudadOrigen] = useState('')
   const [ciudadDestino, setCiudadDestino] = useState('')
+  const [paisOrigen, setPaisOrigen] = useState('')
+  const [paisDestino, setPaisDestino] = useState('')
   const [fechaSalida, setFechaSalida] = useState('')
   const [fechaLlegada, setFechaLlegada] = useState('')
   const [horaSalida, setHoraSalida] = useState('')
@@ -23,6 +25,8 @@ function AddVuelosComponent() {
     horaSalida: horaSalida,
     fechaLlegada: fechaLlegada,
     horaLlegada: horaLlegada,
+    paisOrigen: paisOrigen,
+    paisDestino: paisDestino,
   }
 
   function request(datos) {
@@ -32,14 +36,31 @@ function AddVuelosComponent() {
       return alert(
         'no se debe escoger una fecha de salida mayor a la de llegada'
       )
+    } else {
+      fetch('http://localhost:3000/vuelos', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id_aero_salida: datos.ciudadOrigen,
+          id_aero_llegada: datos.ciudadDestino,
+          fecha_salida: `${datos.fechaSalida}T${datos.horaSalida}:00.000Z`,
+          fecha_llegada: `${datos.fechaLlegada}T${datos.horaLlegada}:00.000Z`,
+          id_pais_salida: datos.paisOrigen,
+          id_pais_llegada: datos.paisDestino,
+        }),
+      })
     }
   }
 
-  const handleCiudadOrigenChange = (e) => {
+  const handleCiudadOrigenChange = async (e) => {
     setCiudadOrigen(e.target.value)
+    setPaisOrigen(e.target.options[e.target.selectedIndex].getAttribute('pais'))
   }
   const handleCiudadDestinoChange = (e) => {
     setCiudadDestino(e.target.value)
+    setPaisDestino(
+      e.target.options[e.target.selectedIndex].getAttribute('pais')
+    )
   }
   const handleFechaSalida = (e) => {
     setFechaSalida(e.target.value)
@@ -56,12 +77,10 @@ function AddVuelosComponent() {
   return (
     <div className='mainContainer'>
       <h1 className=' m-2 d-flex justify-content-center bg-white rounded align-items-center'>
-        Agregar Aviones
+        <h1>Agregar Vuelos</h1>
       </h1>
       <div className='card cardBusqueda'>
-        <div className='card-title m-2'>
-          <h1>Agregar Vuelos</h1>
-        </div>
+        <div className='card-title m-2'></div>
         <div className='card-body'>
           <form className=' border border-primary border-5 rounded formularioPrincipal'>
             <div className='ciudadContainer m-2'>
@@ -83,7 +102,11 @@ function AddVuelosComponent() {
                     </option>
                     {ciudades.map((ciudad) => {
                       return (
-                        <option value={ciudad.id} id={ciudad.id}>
+                        <option
+                          value={ciudad.id}
+                          id={ciudad.id}
+                          pais={ciudad.id_pais}
+                        >
                           {ciudad.nombre}
                         </option>
                       )
@@ -102,7 +125,11 @@ function AddVuelosComponent() {
                     <option selected>--Seleccione su Ciudad de Origen</option>
                     {ciudades.map((ciudad) => {
                       return (
-                        <option key={ciudad.id} value={ciudad.id}>
+                        <option
+                          key={ciudad.id}
+                          value={ciudad.id}
+                          pais={ciudad.id_pais}
+                        >
                           {ciudad.nombre}
                         </option>
                       )

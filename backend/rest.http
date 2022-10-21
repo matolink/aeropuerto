@@ -1,11 +1,9 @@
-GET localhost:3000/busqueda
+GET localhost:3000/vuelos
 POST localhost:3000/database
-POST localhost:3000/aviones
+
+POST http://localhost:3000/vuelos
 Content-Type: application/json
 
 {
-        "nombre":"pruebita",
-        "capacidad":"8000000"
-
-    }
-
+    "id_llegada":"1"
+} 
