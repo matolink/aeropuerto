@@ -28,6 +28,13 @@ function AddVuelosComponent() {
     paisOrigen: paisOrigen,
     paisDestino: paisDestino,
   }
+  function fechasCheck(fecha) {
+    if (fecha < new Date()) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   function request(datos) {
     if (datos.ciudadOrigen == datos.ciudadDestino) {
@@ -36,6 +43,15 @@ function AddVuelosComponent() {
       return alert(
         'no se debe escoger una fecha de salida mayor a la de llegada'
       )
+    } else if (
+      fechasCheck(
+        new Date(`${datos.fechaSalida}T${datos.horaSalida}:00.000Z`)
+      ) ||
+      fechasCheck(
+        new Date(`${datos.fechaLlegada}T${datos.horaLlegada}:00.000Z`)
+      )
+    ) {
+      return alert('la fecha y hora deben ser mayor a la actual!')
     } else {
       fetch('http://localhost:3000/vuelos', {
         method: 'post',
