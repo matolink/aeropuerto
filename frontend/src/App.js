@@ -6,6 +6,8 @@ import AsientosPage from "./pages/AsientosPage"
 import FormularioPage from "./pages/FormularioPage"
 import AddVuelosPage from "./pages/AddVuelosPage"
 import PagoPage from "./pages/PagoPage"
+import EquipajesPage from "./pages/EquipajesPage"
+import ResumenPage from "./pages/ResumenPage"
 function App() {
 	return (
 		<div className="App">
@@ -15,6 +17,8 @@ function App() {
 				<Route path="/formulario" element={<FormularioPage />} />
 				<Route path="/pago" element={<PagoPage />} />
 				<Route path="/aviones" element={<AddVuelosPage />} />
+				<Route path="/equipajes" element={<EquipajesPage />} />
+				<Route path="/resumen" element={<ResumenPage />} />
 			</Routes>
 		</div>
 	)
