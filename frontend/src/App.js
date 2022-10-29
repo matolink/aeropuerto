@@ -8,6 +8,7 @@ import AddVuelosPage from "./pages/AddVuelosPage"
 import PagoPage from "./pages/PagoPage"
 import EquipajesPage from "./pages/EquipajesPage"
 import ResumenPage from "./pages/ResumenPage"
+import TarifasPage from "./pages/TarifasPage"
 function App() {
 	return (
 		<div className="App">
@@ -19,6 +20,7 @@ function App() {
 				<Route path="/aviones" element={<AddVuelosPage />} />
 				<Route path="/equipajes" element={<EquipajesPage />} />
 				<Route path="/resumen" element={<ResumenPage />} />
+				<Route path="/tarifas" element={<TarifasPage />} />
 			</Routes>
 		</div>
 	)
