@@ -2,6 +2,7 @@ import React, {Fragment, useState} from "react"
 import "../stylesheets/EstilosFormulario.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import ResumenCompraComponent from "../components/ResumenCompraComponent"
+import {Link} from "react-router-dom"
 const FormularioComponent = () => {
 	const [datos, setDatos] = useState({
 		nombre: "",
@@ -28,6 +29,11 @@ const FormularioComponent = () => {
 
 	return (
 		<Fragment className="container mainContainer">
+			<link
+				rel="stylesheet"
+				type="text/css"
+				href="path/to/notifications.css"
+			></link>
 			<div className="tituloContainer container rounded d-flex justify-content-center align-items-center bg-light mt-2">
 				<h1 className="titulo">Datos de los Pasajeros</h1>
 			</div>
@@ -231,8 +237,7 @@ const FormularioComponent = () => {
 					</div>
 					<br />
 					<button className="btn btn-primary" type="submit">
-						{" "}
-						Continuar{" "}
+						<Link to="/pago"> Continuar </Link>
 					</button>
 				</form>
 				<ResumenCompraComponent className="cuadro2 container" />

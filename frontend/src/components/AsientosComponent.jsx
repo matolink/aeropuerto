@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"
 import {tiposAsientos} from "../JS-Objects/tiposAsientos"
 import {lugarAsientos} from "../JS-Objects/lugarAsientos"
+import {Link} from "react-router-dom"
 function AsientosComponent() {
 	const [tipoDeAsientoIda, setTipoDeAsientoIda] = useState("")
 	const [idaOIdaVuelta, setIdaOIdaVuelta] = useState("No")
@@ -185,6 +186,9 @@ function AsientosComponent() {
 							</div>
 							<br />
 						</div>
+						<button className="btn btn-secondary">
+							<Link to="/equipajes">Continuar</Link>
+						</button>
 					</div>
 				</div>
 			</div>

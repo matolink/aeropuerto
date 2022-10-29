@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+import {Link} from "react-router-dom"
 import "../stylesheets/BusquedaComponente.css"
 import {Ciudades} from "../JS-Objects/Ciudades.js"
 function BusquedaComponente() {
@@ -122,9 +123,9 @@ function BusquedaComponente() {
 							onClick={(e) => {
 								e.preventDefault()
 							}}
-							className=" m-2 btn btn-primary"
+							className=" m-2 btn btn-secondary"
 						>
-							Buscar Pasajes disponibles
+							<Link to={"/Tarifas"}>Buscar</Link>
 						</button>
 					</form>
 				</div>

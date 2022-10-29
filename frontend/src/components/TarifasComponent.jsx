@@ -1,5 +1,6 @@
 import React from "react"
 import "../stylesheets/TarifasComponent.css"
+import {Link} from "react-router-dom"
 function TarifaComponent() {
 	return (
 		<div>
@@ -80,6 +81,9 @@ function TarifaComponent() {
 							</tbody>
 						</table>
 					</div>
+					<button className="btn btn-primary">
+						<Link to="/asientos">Continuar</Link>
+					</button>
 				</div>
 			</div>
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>

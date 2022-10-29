@@ -1,4 +1,5 @@
 import React from "react"
+import {Link} from "react-router-dom"
 import "../stylesheets/EquipajesComponent.css"
 function EquipajesComponent() {
 	return (
@@ -30,7 +31,9 @@ function EquipajesComponent() {
 				</div>
 			</div>
 			<div className="containerButton bg-light mt-2 d-flex justify-content-center">
-				<button className="btn btn-primary">Continuar</button>
+				<button className="btn btn-primary">
+					<Link to="/resumen">Continuar</Link>
+				</button>
 			</div>
 		</div>
 	)

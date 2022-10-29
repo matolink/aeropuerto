@@ -1,5 +1,7 @@
 import React from "react"
 import "../stylesheets/ResumenComponent.css"
+import {Link} from "react-router-dom"
+
 function ResumenComponent() {
 	return (
 		<div className="mainContainer">
@@ -90,6 +92,9 @@ function ResumenComponent() {
 							<p>Fecha de Partida: 11-12-2022 14:50</p>
 						</div>
 					</div>
+					<button>
+						<Link to="/formulario">Continuar</Link>
+					</button>
 				</div>
 			</div>
 		</div>

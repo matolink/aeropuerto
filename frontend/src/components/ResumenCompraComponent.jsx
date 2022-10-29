@@ -1,5 +1,6 @@
 import React from "react"
 import "../stylesheets/EstilosFormulario.css"
+import {Link} from "react-router-dom"
 const ResumenCompraComponent = () => {
 	return (
 		<div className="cuadroResumen container-sm">

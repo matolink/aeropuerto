@@ -2,8 +2,15 @@ import React, {Fragment, useState} from "react"
 import "../stylesheets/EstilosPago.css"
 import * as bootstrap from "bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
-
+import {ToastContainer, toast} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import {Link} from "react-router-dom"
 const PagoComponent = () => {
+	const notify = () =>
+		toast(
+			"Pago exitoso, por favor revise su correo para informacion de sus vuelos, feliz viaje!"
+		)
+
 	const [datosPago, setDatos] = useState({
 		codigoDescuento: "",
 		formaPago: "",
@@ -186,10 +193,13 @@ const PagoComponent = () => {
 					</label>
 				</div>
 
-				<button className="btn btn-primary" type="submit">
-					{" "}
-					Ir a pagar{" "}
-				</button>
+				<div>
+					<button className="btn btn-primary" onClick={notify} type="submit">
+						{" "}
+						Ir a pagar{" "}
+					</button>
+					<ToastContainer />
+				</div>
 			</form>
 		</Fragment>
 	)
