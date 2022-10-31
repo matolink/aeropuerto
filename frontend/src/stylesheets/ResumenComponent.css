@@ -4,3 +4,13 @@
 	background-color: white;
 	margin: auto;
 }
+
+.containerText {
+	width: 400px;
+}
+
+/* le quita los estilos a los links */
+a {
+	color: white;
+	text-decoration: none;
+}

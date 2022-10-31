@@ -5,3 +5,8 @@
 	background-size: 100%;
 	background-repeat: repeat;
 }
+
+a {
+	color: white;
+	text-decoration: none;
+}
